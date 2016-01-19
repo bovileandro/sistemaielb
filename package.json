@@ -1,0 +1,13 @@
+{
+  "name": "ielb",
+  "version": "0.0.0",
+  "main": "index.html",        
+  "window":{  
+    "title": "Sistema IELB",  
+    "toolbar": false,  
+	"fullsceen": false,	
+	"kiosk": false,
+    "width": 1000,
+    "height": 700
+  }
+}

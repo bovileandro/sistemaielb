@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<script>
+// Load native UI library
+var ngui = require('nw.gui');
+
+// Get the current window
+var nwin = ngui.Window.get();
+
+//nwin.show();
+nwin.maximize();
+</script>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sistema IELB</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--<link href="./index_files/css" rel="stylesheet" type="text/css">-->
+  <!--<link rel="icon" type="image/png" href="http://html.nkdev.info/_con/assets/_con/images/icon.png">-->
+  <!-- nanoScroller -->
+  <link rel="stylesheet" type="text/css" href="assets/css/nanoscroller.css">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+  <!-- Material Design Icons -->
+  <link rel="stylesheet" type="text/css" href="assets/css/material-design-icons.min.css">
+  <!-- IonIcons -->
+  <link rel="stylesheet" type="text/css" href="assets/css/ionicons.min.css">
+  <!-- WeatherIcons -->
+  <link rel="stylesheet" type="text/css" href="assets/css/weather-icons.min.css">
+  <!-- Google Prettify -->
+  <link rel="stylesheet" type="text/css" href="assets/css/prettify.css">
+  <!-- Main -->
+  <link rel="stylesheet" type="text/css" href="assets/css/_con.min.css">
+  <!--[if lt IE 9]>
+    <script src="assets/html5shiv/html5shiv.min.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" type="text/css">
+</head>
+
+<body class="" style="background-color:#35384C;">
+
+
+
+  <form action="index.html">
+	
+
+	<div style="max-width: 500px; margin: 0 auto; margin-top: 100px; padding:30px; background-color:#ffffff;">
+	<h3>Bem vindo</h3>
+  <div class="input-field">
+    <i class="fa fa-user prefix"></i>
+    <input id="username-input" type="text" name="username">
+    <label for="username-input">Usuário</label>
+  </div>
+ 
+  <div class="input-field">
+    <i class="fa fa-unlock-alt prefix"></i>
+    <input id="password-input" type="password" name="password">
+    <label for="password-input">Senha</label>
+  </div>
+  
+  <!--<div class="right-align">
+    <a href="page-forgot-password.html">Forgot Password?</a>
+  </div>-->
+ 
+  <!--<div class="switch">
+    <label>
+      <input type="checkbox" name="keep" checked />
+      <span class="lever"></span>
+      Keep me logged in
+    </label>
+  </div>-->
+ 
+  <button class="waves-effect btn">Entrar</button>
+	</div>
+</form>
+
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/js/jquery.requestAnimationFrame.min.js"></script>
+  <script type="text/javascript" src="assets/js/jquery.nanoscroller.min.js"></script>
+	<!--<script src="app/database/dbaccess.js"></script>-->
+      <script src="assets/js/angular.min.js"></script>
+      <script src="assets/js/angular-route.min.js"></script>  
+  
+  <script type="text/javascript" src="assets/js/materialize.min.js"></script>
+  <script type="text/javascript" src="assets/js/Sortable.min.js"></script>
+  <script type="text/javascript" src="assets/js/_con.min.js"></script>
+  <script type="text/javascript" src="assets/js/prettify.js"></script>
+  <!--<script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="assets/js/dataTables.tableTools.min.js"></script>
+  <script type="text/javascript" src="assets/js/dataTables.scroller.min.js"></script>-->
+
+</body>
+
+</html>

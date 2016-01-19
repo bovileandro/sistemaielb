@@ -1,0 +1,102 @@
+﻿<!-- Breadcrumb -->
+    <div class="page-title">
+
+      <div class="row">
+        <div class="col s12 m9 l10">
+          <h1>Cadastro de Congregações</h1>
+		  
+			<div class="btn-group right">
+				<input type="button" class="btn btn-small z-depth-0" ng-click="salvar(congregacao)" value="Salvar" />
+				<a href="#congregacaolistar" class="btn btn-small red lighten-1 z-depth-0">Cancelar</i></a>
+			</div>		  
+		  
+        </div>
+      </div>
+    </div>
+
+
+    <form>
+
+      <div class="card-panel">
+        <h4>Informações Básicas e Contato</h4>
+
+        <!-- Text Field -->
+        <div class="row">
+          <div class="col l12 s12">
+            <div class="input-field">
+              <input id="nome" type="text" class="validate" ng-model="congregacao.nome">
+              <label for="nome" class="active">Nome</label>
+            </div>
+          </div>
+        </div>
+		
+        <div class="row">
+          <div class="col l9 s12">
+            <div class="input-field">
+              <input id="endereco" type="text" class="validate" ng-model="congregacao.endereco">
+              <label for="endereco" class="active">Endereço</label>
+            </div>
+          </div>
+          <div class="col l3 s12">
+            <div class="input-field">
+              <input id="numero" type="text" class="validate" ng-model="congregacao.numero">
+              <label for="numero" class="active">Número</label>
+            </div>
+          </div>		  
+        </div>		
+        <div class="row">
+          <div class="col l6 s12">
+            <div class="input-field">
+              <input id="bairro" type="text" class="validate" ng-model="congregacao.bairro">
+              <label for="bairro" class="active">Bairro</label>
+            </div>
+          </div>
+          <div class="col l6 s12">
+            <div class="input-field">
+              <input id="complemento" type="text" class="validate" ng-model="congregacao.complemento">
+              <label for="complemento" class="active">Complemento</label>
+            </div>
+          </div>		  
+        </div>				
+        <div class="row">
+          <div class="col l9 s12">
+            <div class="input-field">
+              <input id="cidade" type="text" class="validate" ng-model="congregacao.cidade">
+              <label for="cidade" class="active">Cidade</label>
+            </div>
+          </div>
+          <div class="col l3 s12">
+            <div class="input-field">
+              <input id="cep" type="text" class="validate" ng-model="congregacao.cep">
+              <label for="cep" class="active">CEP</label>
+            </div>
+          </div>		  
+        </div>				
+        <div class="row">
+          <div class="col l6 s12">
+            <div class="input-field">
+              <input id="telefone" type="text" class="validate" ng-model="congregacao.telefone">
+              <label for="telefone" class="active">Telefone Residencial</label>
+            </div>
+          </div>
+          <div class="col l6 s12">
+            <div class="input-field">
+              <input id="telefonecelular" type="text" class="validate" ng-model="congregacao.telefonecelular">
+              <label for="telefonecelular" class="active">Telefone Celular</label>
+            </div>
+          </div>		  
+        </div>						
+        <div class="row">
+          <div class="col l12 s12">
+            <div class="input-field">
+              <input id="email" type="text" class="validate" ng-model="congregacao.email">
+              <label for="email" class="active">E-mail</label>
+            </div>
+          </div>
+        </div>									
+		</div>
+      
+	</div>
+	
+	
+    </form>

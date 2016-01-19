@@ -1,0 +1,61 @@
+﻿<!-- Breadcrumb -->
+    <div class="page-title">
+
+      <div class="row">
+        <div class="col s12 m9 l10">
+          <h1>Cadastro de Ofertas</h1>
+			<div class="btn-group right">
+				<input type="button" class="btn btn-small z-depth-0" ng-click="salvar(oferta)" value="Salvar" />
+				<a href="#ofertaslistar" class="btn btn-small red lighten-1 z-depth-0">Cancelar</i></a>
+			</div>		  
+        </div>
+      </div>
+    </div>
+
+
+    <form>
+
+      <div class="card-panel">
+        <!--<h4>Informações Básicas e Contato</h4>-->
+
+        <!-- Text Field -->
+        <div class="row">
+          <div class="col l3 s12">
+            <div class="input-field">
+              <input id="data" type="text" class="validate" ng-model="oferta.data">
+              <label for="data" class="active">Data</label>
+            </div>
+          </div>
+        </div>
+		
+        <div class="row">
+          <div class="col l3 s12">
+            <div class="input-field">
+              <input id="valor" type="text" class="validate" ng-model="oferta.valor">
+              <label for="valor" class="active">Valor</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col l4 s12">
+			<select class="browser-default" name="slPessoa" id="slPessoa" ng-model="oferta._pessoa">
+				<option value="" disabled selected>Pessoa</option>
+				<option ng-repeat="option in pessoas" value="{{option.id}}">{{option.nome}}</option>
+			</select>
+          </div>
+        </div>
+          
+        <div class="row">
+          <div class="col l4 s12">
+			<select class="browser-default" name="slPlanoContas" id="slPlanoContas" ng-model="oferta._planocontas._id">
+				<option value="" disabled selected>Tipo</option>
+				<option ng-repeat="conta in planocontasss" value="{{conta._id}}">{{conta.descricao}}</option>
+			</select>		  
+          </div>
+        </div>
+        
+	</div>
+	
+	
+    </form>
