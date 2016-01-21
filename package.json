@@ -4,7 +4,7 @@
   "main": "index.html",        
   "window":{  
     "title": "Sistema IELB",  
-    "toolbar": false,  
+    "toolbar": true,
 	"fullsceen": false,	
 	"kiosk": false,
     "width": 1000,

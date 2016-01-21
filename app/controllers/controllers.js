@@ -1,8 +1,16 @@
 'use strict';
 
-var q = require('bluebird');
+//var q = require('bluebird');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var path = require('path');
+
+var Pessoa = require(path.join(process.cwd(),'./app/models/pessoas.js'));
+var Congregacao = require(path.join(process.cwd(),'./app/models/congregacao.js'));
+var Departamento = require(path.join(process.cwd(),'./app/models/departamentos.js'));
+var PlanoConta = require(path.join(process.cwd(),'./app/models/planocontas.js'));
+var Evento = require(path.join(process.cwd(),'./app/models/eventos.js'));
+var Oferta = require(path.join(process.cwd(),'./app/models/ofertas.js'));
 
 mongoose.connect('mongodb://localhost:27017/ielb');
 var db = mongoose.connection;
@@ -11,60 +19,8 @@ db.once('open', function() {
   console.log('conectou');
 });
 
-var pessoasSchema = new Schema({
-   nome:String,
-   endereco:String,
-   numero: String,
-   bairro: String,
-   complemento: String,
-   cidade: String,
-   cep: String,
-   telefoneresidencial: String,
-   telefonecelular: String,
-   email: String,
-   datanascimento: Date,
-   databatismo: Date,
-   dataconfirmacao: Date
-});
-var Pessoa = mongoose.model('pessoas', pessoasSchema);
 
-var congregacaoSchema = new Schema({
-   nome:String,
-   endereco:String,
-   numero: String,
-   bairro: String,
-   complemento: String,
-   cidade: String,
-   cep: String,
-   telefone: String,
-   telefonecelular: String,
-   email: String
-});
-var Congregacao = mongoose.model('congregacao', congregacaoSchema);
 
-var departamentosSchema = new Schema({
-   nome:String
-});
-var Departamento = mongoose.model('departamentos', departamentosSchema);
-
-var planocontasSchema = new Schema({
-   descricao:String
-});
-var PlanoConta = mongoose.model('planocontas', planocontasSchema);
-
-var eventosSchema = new Schema({
-   descricao:String
-});
-var Evento = mongoose.model('eventos', eventosSchema);
-
-var ofertasSchema = new Schema({
-	data:Date,
-	valor: Number,
-//	_pessoa : { type: Schema.Types.ObjectId, ref: 'pessoas' },
-	_pessoa : { type: Number, ref: 'pessoas' },
-	_planocontas : { type: Schema.Types.ObjectId, ref: 'planocontas' }
-});
-var Oferta = mongoose.model('ofertas', ofertasSchema);
 
 app.controller('pessoalistarCtrl', function($scope, $location)
 {
