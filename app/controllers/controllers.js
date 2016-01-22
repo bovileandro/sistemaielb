@@ -1,8 +1,5 @@
-'use strict';
+//'use strict';
 
-//var q = require('bluebird');
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 var path = require('path');
 
 var Pessoa = require(path.join(process.cwd(),'./app/models/pessoas.js'));
@@ -12,15 +9,7 @@ var PlanoConta = require(path.join(process.cwd(),'./app/models/planocontas.js'))
 var Evento = require(path.join(process.cwd(),'./app/models/eventos.js'));
 var Oferta = require(path.join(process.cwd(),'./app/models/ofertas.js'));
 
-mongoose.connect('mongodb://localhost:27017/ielb');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log('conectou');
-});
-
-
-
+var funcoesgerais = require(path.join(process.cwd(),'./app/funcoes/gerais.js'));
 
 app.controller('pessoalistarCtrl', function($scope, $location)
 {
@@ -42,13 +31,13 @@ app.controller('pessoacadastrarCtrl', function($scope, $location, $routeParams)
 			Pessoa.findById(pessoa.id, function(err, model) {
 				model.set(pessoa);
 				model.save(function(err,savemodel){
-					if(err) console.log(err); else location.href = '#pessoalistar';
+					if(err) funcoesgerais.msgErro(err);	else location.href = '#pessoalistar';
 				});
 			});		
 		} else {
 			var newPessoa = new Pessoa(pessoa);
 			newPessoa.save(function(err){
-				if(err) console.log(err); else location.href = '#pessoalistar';
+				if(err) funcoesgerais.msgErro(err); else location.href = '#pessoalistar';
 			});
 		}
 	}

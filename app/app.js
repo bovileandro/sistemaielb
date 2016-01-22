@@ -1,13 +1,7 @@
-// Retrieve
-//var MongoClient = require('mongodb').MongoClient;
+var path = require('path');
+var database = require('./app/database/conexao.js');
 
 var app = angular.module('app',['ngRoute']);
-//require('./teste.js');
-//path = require('path');
-//var cc = require(path.join(process.cwd(),"./app/teste.js"));
-
-
-
  
 app.config(function($routeProvider, $locationProvider)
 {
@@ -89,7 +83,4 @@ app.config(function($routeProvider, $locationProvider)
       controller  : 'importardadosCtrl'
    })                     
    .otherwise ({ redirectTo: '/' });
-   
-//console.log($routeProvider.templateUrl);
-	  //console.log($locationProvider);   
 });
