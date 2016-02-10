@@ -1,15 +1,38 @@
 'use strict';
 
-var mongoose = require('mongoose');
+var fs = require('fs')
+  , ini = require('ini')
+var config = ini.parse(fs.readFileSync('./app/cfg/config.ini', 'utf-8'))
 
-mongoose.connect('mongodb://localhost:27017/ielb');
-var db = mongoose.connection;
-
-db.on('error', console.error.bind(console, 'connection error:'));
-
-db.once('open', function() {
-  console.log('conectou');
+var execFile = require('child_process').execFile, child;
+child = execFile(config.mongo.exe,
+	function(error,stdout,stderr) { 
+		if (error) {
+			console.log(error.stack); 
+			console.log('Error code: '+ error.code); 
+			console.log('Signal received: '+ 
+			error.signal);
+		} 
+		console.log('Child Process stdout: '+ stdout);
+		console.log('Child Process stderr: '+ stderr);
+	}); 
+child.on('exit', function (code) { 
+	console.log('Child process exited with exit code '+ code);
 });
+//child.stdout.on('data', function (data) { });
 
-exports.mongoose = mongoose;
-exports.db = db;
+setTimeout(function(){
+	var mongoose = require('mongoose');
+	
+	mongoose.connect('mongodb://'+config.mongo.host+':'+config.mongo.port+'/'+config.mongo.db);
+	var db = mongoose.connection;
+	
+	db.on('error', console.error.bind(console, 'connection error:'));
+	
+	db.once('open', function() {
+	console.log('conectou');
+	});
+	
+	exports.mongoose = mongoose;
+	exports.db = db;
+},4000);

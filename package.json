@@ -4,10 +4,16 @@
   "main": "index.html",        
   "window":{  
     "title": "Sistema IELB",  
-    "toolbar": true,
+    "toolbar": false,
 	"fullsceen": false,	
 	"kiosk": false,
     "width": 1000,
     "height": 700
-  }
+  },
+ "dependencies":{ 
+    "mongoose": "", 
+	"mongoose-validator": "", 
+	"ini": "", 
+	"dialog": ""
+  }  
 }

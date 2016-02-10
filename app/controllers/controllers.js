@@ -11,15 +11,15 @@ var Oferta = require(path.join(process.cwd(),'./app/models/ofertas.js'));
 
 var funcoesgerais = require(path.join(process.cwd(),'./app/funcoes/gerais.js'));
 
-app.controller('pessoalistarCtrl', function($scope, $location)
+app.controller('pessoalistarCtrl', function($rootScope, $location)
 {
-	$scope.activetab = $location.path();
-	$scope.pessoas = [];
+	$rootScope.activetab = $location.path();
+	$rootScope.pessoas = [];
 	
 	Pessoa.find(function (err, result) {
 		if (err) return console.error(err);
-		$scope.pessoas = result;
-		$scope.$apply();
+		$rootScope.pessoas = result;
+		$rootScope.$apply();
 	});
 });
 app.controller('pessoacadastrarCtrl', function($scope, $location, $routeParams)

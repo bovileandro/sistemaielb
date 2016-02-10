@@ -6,7 +6,7 @@ var extend = require('mongoose-validator').extend;
 var Schema = mongoose.Schema;
 
 var pessoasSchema = new Schema({
-   nome: {type: String, required:true},
+   nome: {type: String, required:true}, //required: 'A name is required',
    endereco:String,
    numero: String,
    bairro: String,
@@ -21,12 +21,12 @@ var pessoasSchema = new Schema({
    dataconfirmacao: Date
 });
 
-pessoasSchema.path('email').validate(
+/*pessoasSchema.path('email').validate(
   validate({
     validator: 'isMail',
     message: 'E-mail inválido'
   })
-);
+);*/
 
 pessoasSchema.path('nome').validate(
   validate({

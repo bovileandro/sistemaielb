@@ -82,5 +82,9 @@ app.config(function($routeProvider, $locationProvider)
       templateUrl : 'app/views/importardados.html',
       controller  : 'importardadosCtrl'
    })                     
+	.when('/configuracoes', {
+      templateUrl : 'app/views/configuracoes.html',
+      controller  : 'configuracoesCtrl'
+   })                        
    .otherwise ({ redirectTo: '/' });
 });
