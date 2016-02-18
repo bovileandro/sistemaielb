@@ -1,8 +1,9 @@
 'use strict';
 
-var fs = require('fs')
-  , ini = require('ini')
-var config = ini.parse(fs.readFileSync('./app/cfg/config.ini', 'utf-8'))
+var fs = require('fs');
+var ini = require('ini');
+var path = require('path');  
+var config = ini.parse(fs.readFileSync(path.dirname(process.execPath)+'/config.ini', 'utf-8'));
 
 var execFile = require('child_process').execFile, child;
 child = execFile(config.mongo.exe,
@@ -35,4 +36,4 @@ setTimeout(function(){
 	
 	exports.mongoose = mongoose;
 	exports.db = db;
-},10000);
+},8000);
