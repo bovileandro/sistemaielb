@@ -23,7 +23,7 @@ child.on('exit', function (code) {
 
 setTimeout(function(){
 	var mongoose = require('mongoose');
-	
+	console.log('mongodb://'+config.mongo.host+':'+config.mongo.port+'/'+config.mongo.db);
 	mongoose.connect('mongodb://'+config.mongo.host+':'+config.mongo.port+'/'+config.mongo.db);
 	var db = mongoose.connection;
 	
@@ -35,4 +35,4 @@ setTimeout(function(){
 	
 	exports.mongoose = mongoose;
 	exports.db = db;
-},4000);
+},10000);

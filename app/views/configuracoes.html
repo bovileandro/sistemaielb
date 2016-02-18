@@ -1,0 +1,60 @@
+﻿<!-- Breadcrumb -->
+    <div class="page-title">
+
+      <div class="row">
+        <div class="col s12 m9 l10">
+          <h1>Configurações</h1>
+			<div class="btn-group right">
+				<input type="button" class="btn btn-small z-depth-0" ng-click="salvar(config)" value="Salvar" />
+			</div>		  
+        </div>
+      </div>
+    </div>
+
+
+    <form>
+
+      <div class="card-panel">
+        <h4>Banco de Dados</h4>
+
+        <!-- Text Field -->
+        <div class="row">
+          <div class="col l12 s12">
+            <div class="input-field">
+              <input id="exe" type="text" class="validate" ng-model="config.exe">
+              <label for="exe" class="active">Executável</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col l12 s12">
+            <div class="input-field">
+              <input id="host" type="text" class="validate" ng-model="config.host">
+              <label for="host" class="active">Servidor</label>
+            </div>
+          </div>
+        </div>
+		
+        <div class="row">
+          <div class="col l12 s12">
+            <div class="input-field">
+              <input id="port" type="text" class="validate" ng-model="config.port">
+              <label for="port" class="active">Porta</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col l12 s12">
+            <div class="input-field">
+              <input id="db" type="text" class="validate" ng-model="config.db">
+              <label for="db" class="active">Nome do Banco</label>
+            </div>
+          </div>
+        </div>
+		
+	</div>
+	
+	
+    </form>

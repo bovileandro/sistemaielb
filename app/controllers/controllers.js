@@ -1,6 +1,8 @@
 //'use strict';
 
 var path = require('path');
+var fs = require('fs');
+var ini = require('ini');
 
 var Pessoa = require(path.join(process.cwd(),'./app/models/pessoas.js'));
 var Congregacao = require(path.join(process.cwd(),'./app/models/congregacao.js'));
@@ -218,4 +220,48 @@ app.controller('ofertascadastrarCtrl', function($scope, $location, $routeParams)
 	if ($routeParams.id != undefined){
 		carregar($routeParams.id);
 	}
+});
+
+
+app.controller('configuracoesCtrl', function($scope, $location, $routeParams)
+{
+	$scope.activetab = $location.path();
+	
+	//var config = ini.parse(fs.readFileSync('./app/cfg/config.ini', 'utf-8'));
+	var config = ini.parse(fs.readFileSync(path.dirname(process.execPath)+'/config.ini', 'utf-8'));
+	$scope.config = {};
+	
+	console.log('chegou');
+	$scope.salvar = function(model) {
+		console.log('comecou gravar');
+		config.mongo.exe = model.exe;
+		config.mongo.host = model.host;
+		config.mongo.port = model.port;
+		config.mongo.db = model.db;
+	
+		fs.writeFileSync(path.dirname(process.execPath)+'/config.ini', ini.stringify(config))
+		console.log('terminou');
+	};
+	
+	
+	var carregar = function(){
+		console.log('começou carregar');
+		
+
+		$scope.config.exe = config.mongo.exe;
+		$scope.config.host = config.mongo.host;
+		$scope.config.port = config.mongo.port;
+		$scope.config.db = config.mongo.db;
+		
+		$scope.$apply();
+		console.log('terminou');
+	};
+
+	carregar();
+	console.log('fim');
+	
+	/*var path = require('path');
+	var nwDir = path.dirname(process.execPath);
+	console.log(process.execPath);
+	console.log(nwDir);*/
 });
