@@ -86,5 +86,10 @@ app.config(function($routeProvider, $locationProvider)
       templateUrl : 'app/views/configuracoes.html',
       controller  : 'configuracoesCtrl'
    })                        
+   .when('/paroquiacadastrar', {
+      templateUrl : 'app/views/paroquiacadastrar.html',
+      controller  : 'paroquiacadastrarCtrl'
+   })    
+
    .otherwise ({ redirectTo: '/' });
 });

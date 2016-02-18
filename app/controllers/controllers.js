@@ -4,6 +4,7 @@ var path = require('path');
 var fs = require('fs');
 var ini = require('ini');
 
+var Paroquia = require(path.join(process.cwd(),'./app/models/paroquia.js'));
 var Pessoa = require(path.join(process.cwd(),'./app/models/pessoas.js'));
 var Congregacao = require(path.join(process.cwd(),'./app/models/congregacao.js'));
 var Departamento = require(path.join(process.cwd(),'./app/models/departamentos.js'));
@@ -233,35 +234,62 @@ app.controller('configuracoesCtrl', function($scope, $location, $routeParams)
 	
 	console.log('chegou');
 	$scope.salvar = function(model) {
-		console.log('comecou gravar');
 		config.mongo.exe = model.exe;
 		config.mongo.host = model.host;
 		config.mongo.port = model.port;
 		config.mongo.db = model.db;
 	
 		fs.writeFileSync(path.dirname(process.execPath)+'/config.ini', ini.stringify(config))
-		console.log('terminou');
 	};
 	
 	
 	var carregar = function(){
-		console.log('começou carregar');
-		
-
 		$scope.config.exe = config.mongo.exe;
 		$scope.config.host = config.mongo.host;
 		$scope.config.port = config.mongo.port;
 		$scope.config.db = config.mongo.db;
 		
 		$scope.$apply();
-		console.log('terminou');
 	};
 
 	carregar();
-	console.log('fim');
+});
+
+app.controller('paroquiacadastrarCtrl', function($scope, $location, $routeParams)
+{
+	$scope.activetab = $location.path();
+		
+	$scope.salvar = function(paroquia) {
+		console.log('começou salvar');
+		Paroquia.find(function(err, model) {
+				console.log(model);
+				console.log(model.length);
+				console.log(paroquia);
+				//if (model != undefined){
+				if (model[0].length != 0) {
+					model[0].set(paroquia);
+					console.log(':/')
+					model[0].save(function(err,savemodel){
+						console.log(savemodel);
+						if(err) funcoesgerais.msgErro(err);	else location.href = '#';
+					});
+				} else {
+					var newParoquia = new Paroquia(paroquia);
+					newParoquia.save(function(err){
+						if(err) funcoesgerais.msgErro(err); else location.href = '#';
+					});
+
+				}
+			});
+	};
 	
-	/*var path = require('path');
-	var nwDir = path.dirname(process.execPath);
-	console.log(process.execPath);
-	console.log(nwDir);*/
+	var carregar = function() {
+		Paroquia.find(function(err, model) {
+			$scope.paroquia = model[0];
+			$scope.$apply();
+		});
+	}
+	
+	carregar();
+	
 });

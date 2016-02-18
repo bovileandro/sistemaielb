@@ -27,6 +27,22 @@
     <script src="assets/html5shiv/html5shiv.min.js"></script>
   <![endif]-->
   <link rel="stylesheet" type="text/css">
+  <style type="text/css">
+  #popup{
+     position: fixed;
+     top: 0; bottom: 0;
+     left: 0; right: 0;
+     margin: auto;
+     width: 600px;
+     height: 150px;
+     padding: 20px;
+     border: solid 5px #000;
+     background: #ffffd0;
+     display: none;
+  }
+  </style>
+
+
 </head>
 
 <body class="">
@@ -126,6 +142,8 @@
 
         <ul>
           <li class="label">Cadastros</li>
+          <li ng-class="{active: activetab == '/paroquiacadastrar'}">        <a class="waves-effect waves-blue" href="#paroquiacadastrar"><i class="fa fa-cube"></i>Paróquia</a></li>
+
           <li ng-class="{active: activetab == '/pessoalistar'}">        <a class="waves-effect waves-blue" href="#pessoalistar"><i class="fa fa-cube"></i>Pessoas</a></li>
           <!--<li ng-class="{active: activetab == '/congregacaolistar'}">   <a class="waves-effect waves-blue" href="#congregacaolistar"><i class="mdi-action-home"></i>Congregações</a></li>		  
 		  <li ng-class="{active: activetab == '/departamentoslistar'}"> <a class="waves-effect waves-blue" href="#departamentoslistar"><i class="fa fa-cube"></i>Departamentos</a></li>	
@@ -176,9 +194,10 @@
 </div>
 
 
-
-
-
+   <DIV id="popup"> 
+     <p>Conteúdo do pop-up aqui.</p>
+     <!--<p><small class="fechar"><a href="javascript: fechar();">Fechar pop-up</a></small></p>-->
+   </DIV>
   
     <div ng-view></div>
 
