@@ -56,17 +56,55 @@ app.controller('pessoacadastrarCtrl', function($scope, $location, $routeParams)
 		carregar($routeParams.id);
 	}
 });
+
 app.controller('congregacaolistarCtrl', function($rootScope, $location)
 {
-   $rootScope.activetab = $location.path();
-   
-	$rootScope.toggle = function() {
-		console.log('clicou');
-	};
+	$rootScope.activetab = $location.path();
+	$rootScope.congregacao = [];
+	
+	Congregacao.find(function (err, result) {
+		if (err) return console.error(err);
+		$rootScope.congregacao = result;
+		$rootScope.$apply();
+	});
 });
-app.controller('congregacaocadastrarCtrl', function($rootScope, $location)
+app.controller('congregacaocadastrarCtrl', function($scope, $location, $routeParams)
 {
-   $rootScope.activetab = $location.path();
+	console.log($routeParams);
+	$scope.activetab = $location.path();
+		
+	$scope.salvar = function(congregacao) {
+		console.log('1');
+		if (congregacao.id != undefined){
+			console.log('2');
+			Congregacao.findById(congregacao.id, function(err, model) {
+				console.log('3');
+				model.set(congregacao);
+				model.save(function(err,savemodel){
+					console.log('4');
+					if(err) funcoesgerais.msgErro(err);	else location.href = '#congregacaolistar';
+				});
+			});		
+		} else {
+			console.log('5');
+			var newCongregacao = new Congregacao(congregacao);
+			newCongregacao.save(function(err){
+				console.log('6');
+				if(err) funcoesgerais.msgErro(err); else location.href = '#congregacaolistar';
+			});
+		}
+	}
+	
+	var carregar = function(id) {
+		Congregacao.findById(id, function(err, model) {
+			$scope.congregacao = model;
+			$scope.$apply();
+		});
+	}
+	
+	if ($routeParams.id != undefined){
+		carregar($routeParams.id);
+	}
 });
 app.controller('departamentoslistarCtrl', function($rootScope, $location)
 {
@@ -266,7 +304,7 @@ app.controller('paroquiacadastrarCtrl', function($scope, $location, $routeParams
 				console.log(model.length);
 				console.log(paroquia);
 				//if (model != undefined){
-				if (model[0].length != 0) {
+				if (model.length != 0) {
 					model[0].set(paroquia);
 					console.log(':/')
 					model[0].save(function(err,savemodel){

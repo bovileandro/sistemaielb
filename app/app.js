@@ -9,6 +9,10 @@ app.config(function($routeProvider, $locationProvider)
    //$locationProvider.html5Mode(true);
    
    $routeProvider
+   .when('/paroquiacadastrar', {
+      templateUrl : 'app/views/paroquiacadastrar.html',
+      controller  : 'paroquiacadastrarCtrl'
+   })       
    .when('/pessoalistar', {
       templateUrl : 'app/views/pessoalistar.html',
       controller  : 'pessoalistarCtrl'
@@ -21,6 +25,18 @@ app.config(function($routeProvider, $locationProvider)
       templateUrl : 'app/views/pessoacadastrar.html',
       controller  : 'pessoacadastrarCtrl'
    })       
+   .when('/congregacaolistar', {
+      templateUrl : 'app/views/congregacaolistar.html',
+      controller  : 'congregacaolistarCtrl'
+   })            
+   .when('/congregacaocadastrar', {
+      templateUrl : 'app/views/congregacaocadastrar.html',
+      controller  : 'congregacaocadastrarCtrl'
+   })      
+   .when('/congregacaocadastrar/:id', {
+      templateUrl : 'app/views/congregacaocadastrar.html',
+      controller  : 'congregacaocadastrarCtrl'
+   })           
    .when('/ofertaslistar', {
       templateUrl : 'app/views/ofertaslistar.html',
       controller  : 'ofertaslistarCtrl'
@@ -37,15 +53,7 @@ app.config(function($routeProvider, $locationProvider)
    
    
    
-	.when('/congregacaolistar', {
-      templateUrl : 'app/views/congregacaolistar.html',
-      controller  : 'congregacaolistarCtrl'
-   })            
-   .when('/congregacaocadastrar', {
-      templateUrl : 'app/views/congregacaocadastrar.html',
-      controller  : 'congregacaocadastrarCtrl'
-   })      
-   
+
    .when('/departamentoslistar', {
       templateUrl : 'app/views/departamentoslistar.html',
       controller  : 'departamentoslistarCtrl'
@@ -86,10 +94,5 @@ app.config(function($routeProvider, $locationProvider)
       templateUrl : 'app/views/configuracoes.html',
       controller  : 'configuracoesCtrl'
    })                        
-   .when('/paroquiacadastrar', {
-      templateUrl : 'app/views/paroquiacadastrar.html',
-      controller  : 'paroquiacadastrarCtrl'
-   })    
-
    .otherwise ({ redirectTo: '/' });
 });
